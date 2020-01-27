@@ -1,0 +1,38 @@
+<ul class="navbar-nav mr-auto mt-5">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/composemail">ComposeMail</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/recievedemail">Inbox</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/sentitems">SentItems</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/deleteditems">DeletedItems</a>
+    </li>
+</ul>
+<div class="col-md-4 card card-body offset-4 mt-5">
+    <h5 class="float-left mb-5 bg-dark text-white">Enter details</h5>
+    <form action="" #email='ngForm' method="POST" (ngSubmit)="sendEmail(email)">
+        <div class="form-group">
+            <input type="text" name="toaddress" class="form-control" #toaddress='ngModel' ngModel placeholder="Enter your to address" required>
+            <div *ngIf="toaddress.invalid && toaddress.touched ">
+                <p class="alert alert-danger" *ngIf='toaddress.errors.required'>This field is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea type="text" name="subject" id="subject" cols="30" rows="2" class="form-control" #subject='ngModel' ngModel placeholder="Type subject" required></textarea>
+            <div *ngIf="subject.invalid && subject.touched ">
+                <p class="alert alert-danger" *ngIf='subject.errors.required'>This field is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea type="text" name="message" id="message" cols="30" rows="5" class="form-control" #message='ngModel' ngModel placeholder="Type your message" required></textarea>
+            <div *ngIf="message.invalid && message.touched ">
+                <p class="alert alert-danger" *ngIf='message.errors.required'>This field is required</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary" [disabled]='email.invalid'>Send Email</button><br>
+    </form>
+</div>
